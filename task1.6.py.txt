@@ -1,0 +1,210 @@
+class Animals:
+    feed = None
+    weight = 0
+    name = None
+    sound = None
+
+    def feeding(self, feed):
+        self.feed = feed
+        print('Animal fed')
+
+class Birds(Animals):
+    eggs = 0
+
+    def grab_egg(self, eggs):
+        self.eggs += eggs
+
+class Goose(Birds):
+    quantity = 0
+
+    def __init__(self, feed=None, weight=0, name='NoName'):
+        self.feed = feed
+        self.weight = weight
+        self.name = name
+        self.quantity += 1
+
+    def __str__(self):
+      return f'{self.name}'
+
+    def __repr__(self):
+      return f'{self.name} {self.feed} {self.quantity}'
+
+    def set_weight(self, weight):
+        self.weight += weight
+
+    def set_name(self, name):
+        self.name = name
+
+    def set_voice_sound(self, sound='honk honk'):
+        self.sound = sound
+
+class Chicken(Birds):
+    quantity = 0
+
+    def __init__(self, feed=None, weight=0, name='NoName'):
+        self.feed = feed
+        self.weight = weight
+        self.name = name
+        self.quantity += 1
+
+    def set_weight(self, weight):
+        self.weight += weight
+
+    def set_name(self, name):
+        self.name = name
+
+    def set_voice_sound(self, sound='cluck'):
+        self.sound = sound
+
+class Duck(Birds):
+    quantity = 0
+
+    def __init__(self, feed=None, weight=0, name='NoName'):
+        self.feed = feed
+        self.weight = weight
+        self.name = name
+        self.quantity += 1
+
+    def set_weight(self, weight):
+        self.weight += weight
+
+    def set_name(self, name):
+        self.name = name
+
+    def set_voice_sound(self, sound='quack quack'):
+        self.sound = sound
+
+class Milk(Animals):
+    milk = 0
+
+    def grab_milk(self, milk):
+      self.milk += milk
+
+class Cow(Milk):
+    quantity = 0
+
+    def __init__(self, feed=None, weight=0, name='NoName'):
+      self.feed = feed
+      self.weight = weight
+      self.name = name
+      self.quantity += 1
+
+    def set_weight(self, weight):
+        self.weight += weight
+
+    def set_name(self, name):
+        self.name = name
+
+    def set_voice_sound(self, sound='Moooooo'):
+        self.sound = sound
+
+class Goat(Milk):
+    quantity = 0
+
+    def __init__(self, feed=None, weight=0, name='NoName'):
+      self.feed = feed
+      self.weight = weight
+      self.name = name
+      self.quantity += 1
+
+    def set_weight(self, weight):
+        self.weight += weight
+
+    def set_name(self, name):
+        self.name = name
+
+    def set_voice_sound(self, sound='Baaaa'):
+        self.sound = sound
+
+class Sheep(Animals):
+    wool = 0
+    quantity = 0
+
+    def __init__(self, feed=None, weight=0, name='NoName'):
+      self.feed = feed
+      self.weight = weight
+      self.name = name
+      self.quantity += 1
+
+    def cut_wool(self, wool):
+      self.wool += wool
+
+    def set_weight(self, weight):
+        self.weight += weight
+
+    def set_name(self, name):
+        self.name = name
+
+    def set_voice_sound(self, sound='Baaaa'):
+        self.sound = sound
+
+
+animals_list = []
+Gray_goose = Goose('hungry' , 1 , 'Серый')
+Gray_goose.set_weight(2)
+Gray_goose.grab_egg(4)
+Gray_goose.set_voice_sound()
+animals_list.append(Gray_goose)
+
+White_goose = Goose('hungry' , 1 , 'Белый')
+White_goose.set_weight(1)
+White_goose.grab_egg(2)
+White_goose.set_voice_sound()
+animals_list.append(White_goose)
+
+Chicken_koko = Chicken('hungry', 1, 'Ко-Ко')
+Chicken_koko.set_weight(1)
+Chicken_koko.grab_egg(2)
+Chicken_koko.set_voice_sound()
+animals_list.append(Chicken_koko)
+
+Chicken_kukareku = Chicken('hungry', 1, 'Кукареку')
+Chicken_kukareku.set_weight(1)
+Chicken_kukareku.grab_egg(2)
+Chicken_kukareku.set_voice_sound()
+animals_list.append(Chicken_kukareku)
+
+Duck_Kruakva = Duck('hungry', 1, 'Кряква')
+Duck_Kruakva.set_weight(1)
+Duck_Kruakva.grab_egg(2)
+Duck_Kruakva.set_voice_sound()
+animals_list.append(Duck_Kruakva)
+
+Cow_Manka = Cow('hungry', 250, 'Манька')
+Cow_Manka.set_weight(13)
+Cow_Manka.grab_milk(15)
+Cow_Manka.set_voice_sound()
+animals_list.append(Cow_Manka)
+
+Goat_Roga = Goat('hungry', 90, 'Рога')
+Goat_Roga.set_weight(2)
+Goat_Roga.grab_milk(10)
+Goat_Roga.set_voice_sound()
+animals_list.append(Goat_Roga)
+
+Goat_Kopita = Goat('hungry', 110, 'Копыта')
+Goat_Kopita.set_weight(2)
+Goat_Kopita.grab_milk(7)
+Goat_Kopita.set_voice_sound()
+animals_list.append(Goat_Kopita)
+
+Sheep_Barashek = Sheep('hungry', 99, 'Барашек')
+Sheep_Barashek.set_weight(2)
+Sheep_Barashek.cut_wool(3)
+Sheep_Barashek.set_voice_sound()
+animals_list.append(Sheep_Barashek)
+
+Sheep_Kudraviy = Sheep('hungry', 91, 'Кудрявый')
+Sheep_Kudraviy.set_weight(2)
+Sheep_Kudraviy.cut_wool(3)
+Sheep_Kudraviy.set_voice_sound()
+animals_list.append(Sheep_Kudraviy)
+
+d = {}
+for obj in animals_list:
+  d[obj.name] = obj.weight
+print(d)
+x = sum(d.values())
+sorted_dict = sorted(d.items() , key=lambda x: x[1], reverse=True)
+print('Общий вес всех животных:', x)
+print('Самое тяжелое животное:', sorted_dict[0][0])
